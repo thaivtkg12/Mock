@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Vegana - Admin Dashboard</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="../../assets/img/icon.ico" type="image/x-icon"/>
-	
+	<link rel="icon" href="../../assets/img/icon.ico" type="image/x-icon" />
+
 	<!-- Fonts and icons -->
 	<script src="../../assets/js/plugin/webfont/webfont.min.js"></script>
 	<script>
 		WebFont.load({
-			google: {"families":["Lato:300,400,700,900"]},
-			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../assets/css/fonts.min.css']},
-			active: function() {
+			google: {"families": ["Lato:300,400,700,900"]},
+			custom: {"families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../assets/css/fonts.min.css']},
+			active: function () {
 				sessionStorage.fonts = true;
 			}
 		});
@@ -23,52 +24,55 @@
 	<link rel="stylesheet" href="../../assets/css/atlantis.min.css">
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="../../assets/css/demo.css">
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+
 <body>
 	<div class="wrapper">
-	<!-- Header -->
-	
-	<th:block th:replace="~{admin/fragments/header :: header}"></th:block>
-	
-	<!-- End Header -->
-	
-	<!-- Navbar -->
-	
-	<th:block th:replace="~{admin/fragments/navbar :: navbar}"></th:block>
-	
-	<!-- End Navbar -->
-		
-	<div class="main-panel">
-		<div class="content">
-			<div class="page-inner">
-				<div class="page-header">
-					<h4 class="page-title">Supplier Management</h4>
-					<ul class="breadcrumbs">
-						<li class="nav-home">
-							<a href="#">
-								<i class="flaticon-home"></i>
-							</a>
-						</li>
-						<li class="separator">
-							<i class="flaticon-right-arrow"></i>
-						</li>
-						<li class="nav-item">
-							<a href="#">Home page</a>
-						</li>
-						<li class="separator">
-							<i class="flaticon-right-arrow"></i>
-						</li>
-						<li class="nav-item">
-							<a href="#">Supplier Management</a>
-						</li>
-					</ul>
-				</div>
+		<!-- Header -->
+
+		<th:block th:replace="~{admin/fragments/header :: header}"></th:block>
+
+		<!-- End Header -->
+
+		<!-- Navbar -->
+
+		<th:block th:replace="~{admin/fragments/navbar :: navbar}"></th:block>
+
+		<!-- End Navbar -->
+
+		<div class="main-panel">
+			<div class="content">
+				<div class="page-inner">
+					<div class="page-header">
+						<h4 class="page-title">Supplier Management</h4>
+						<ul class="breadcrumbs">
+							<li class="nav-home">
+								<a href="#">
+									<i class="flaticon-home"></i>
+								</a>
+							</li>
+							<li class="separator">
+								<i class="flaticon-right-arrow"></i>
+							</li>
+							<li class="nav-item">
+								<a href="#">Home page</a>
+							</li>
+							<li class="separator">
+								<i class="flaticon-right-arrow"></i>
+							</li>
+							<li class="nav-item">
+								<a href="#">Supplier Management</a>
+							</li>
+						</ul>
+					</div>
 					<div class="col-md-12">
 						<div class="card">
 							<div class="card-header">
 								<div class="d-flex align-items-center">
 									<h4 class="card-title" style="text-decoration: underline;">Supplier Management</h4>
-									<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
+									<button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+										data-target="#addRowModal">
 										<i class="fa fa-plus"></i>
 										Add Supplier
 									</button>
@@ -81,13 +85,33 @@
 										<div class="modal-content">
 											<div class="modal-header no-bd">
 												<h5 class="modal-title">
-													<span class="fw-mediumbold" style="text-decoration: underline; color: black;">
-													Add Supplier</span> 
-												
+													<span class="fw-mediumbold"
+														style="text-decoration: underline; color: black;">
+														Add Supplier</span>
+
 												</h5>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>
+												<th:block th:if="${param.error}">
+													<script>
+														Swal.fire({
+															icon: 'error',
+															title: 'Add Failure',
+															text: '[[${param.error}]]',
+														})
+													</script>
+												</th:block>
+												<th:block th:if="${param.message}">
+													<script>
+														Swal.fire({
+															icon: 'success',
+															title: 'Add Sucess',
+															text: '[[${param.message}]]',
+														})
+													</script>
+												</th:block>
 											</div>
 											<div class="modal-body">
 												<form th:action="@{/addSupplier}" th:object="${supplier}" method="post">
@@ -95,7 +119,9 @@
 														<div class="col-sm-12">
 															<div class="form-group form-group-default">
 																<label>Supplier Name</label>
-																<input th:field="*{name}" id="name" type="text" class="form-control" placeholder="supplier name" required="required">
+																<input th:field="*{name}" id="name" type="text"
+																	class="form-control" placeholder="supplier name"
+																	required="required">
 															</div>
 														</div>
 													</div>
@@ -103,7 +129,9 @@
 														<div class="col-sm-12">
 															<div class="form-group form-group-default">
 																<label>Email</label>
-																<input th:field="*{email}" id="email" type="email" class="form-control" placeholder="email" required="required">
+																<input th:field="*{email}" id="email" type="email"
+																	class="form-control" placeholder="email"
+																	required="required">
 															</div>
 														</div>
 													</div>
@@ -111,76 +139,109 @@
 														<div class="col-sm-12">
 															<div class="form-group form-group-default">
 																<label>Phone</label>
-																<input th:field="*{phone}" id="phone" type="text" class="form-control" placeholder="phone" required="required">
+																<input th:field="*{phone}" id="phone" type="text"
+																	class="form-control" placeholder="phone"
+																	required="required">
 															</div>
 														</div>
 													</div>
 													<div class="modal-footer no-bd">
 														<button type="submit" id="" class="btn btn-primary">Add</button>
-														<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+														<button type="button" class="btn btn-danger"
+															data-dismiss="modal">Close</button>
 													</div>
 												</form>
 											</div>
 										</div>
 									</div>
 								</div>
-								
+
 								<!-- Modal edit-->
-								<div class="modal fade" id="editRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+								<div class="modal fade" id="editRowModal" tabindex="-1" role="dialog"
+									aria-hidden="true">
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">
 											<div class="modal-header no-bd">
 												<h5 class="modal-title">
 													<span class="fw-mediumbold" style="text-decoration: underline;">
-													Edit Supplier</span> 
-												
+														Edit Supplier</span>
+
 												</h5>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>
+												<th:block th:if="${param.error}">
+													<script>
+														Swal.fire({
+															icon: 'error',
+															title: 'Add Failure',
+															text: '[[${error}]]',
+														})
+													</script>
+												</th:block>
+												<th:block th:if="${message}">
+													<script>
+														Swal.fire({
+															icon: 'success',
+															title: 'Add Sucess',
+															text: '[[${message}]]',
+														})
+													</script>
+												</th:block>
 											</div>
 											<div class="modal-body">
-												<form th:action="@{/updateSupplier/{id}(id=${supplier.id})}" th:object="${supplier}" method="post">
+												<form th:action="@{/updateSupplier/{id}(id=${supplier.id})}"
+													th:object="${supplier}" method="post">
 													<div class="row">
 														<div class="col-sm-12">
 															<div class="form-group form-group-default">
 																<label>ID</label>
-																<input th:field="*{id}" id="id" type="text" class="form-control" placeholder="id" readonly="readonly">
+																<input th:field="*{id}" id="id" type="text"
+																	class="form-control" placeholder="id"
+																	readonly="readonly">
 															</div>
 														</div>
 														<div class="col-sm-12">
 															<div class="form-group form-group-default">
 																<label>Supplier Name</label>
-																<input th:field="*{name}" id="name" type="text" class="form-control" placeholder="supplier name" required="required">
+																<input th:field="*{name}" id="name" type="text"
+																	class="form-control" placeholder="supplier name"
+																	required="required">
 															</div>
 														</div>
 														<div class="col-sm-12">
 															<div class="form-group form-group-default">
 																<label>Email</label>
-																<input th:field="*{email}" id="email" type="text" class="form-control" placeholder="email" required="required">
+																<input th:field="*{email}" id="email" type="text"
+																	class="form-control" placeholder="email"
+																	required="required">
 															</div>
 														</div>
 														<div class="col-sm-12">
 															<div class="form-group form-group-default">
 																<label>Phone</label>
-																<input th:field="*{phone}" id="phone" type="text" class="form-control" placeholder="phone" required="required">
+																<input th:field="*{phone}" id="phone" type="text"
+																	class="form-control" placeholder="phone"
+																	required="required">
 															</div>
 														</div>
 													</div>
 													<div class="modal-footer no-bd">
-														<button type="submit" id="" class="btn btn-primary">Update</button>
-														<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+														<button type="submit" id=""
+															class="btn btn-primary">Update</button>
+														<button type="button" class="btn btn-danger"
+															data-dismiss="modal">Close</button>
 													</div>
 												</form>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="alert alert-success row col-12"
-									th:if="${message}" th:text="${message}">
+								<div class="alert alert-success row col-12" th:if="${message}" th:text="${message}">
 								</div>
 								<div class="table-responsive">
-									<table id="add-row" class="display table table-striped table-hover" >
+									<table id="add-row" class="display table table-striped table-hover">
 										<thead>
 											<tr>
 												<th>ID</th>
@@ -207,29 +268,25 @@
 												<td>[[${item.phone}]]</td>
 												<td>
 													<div class="form-button-action">
-														<a th:href="@{/editSupplier/{id}(id=${item.id})}"
-														type="button" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+														<a th:href="@{/editSupplier/{id}(id=${item.id})}" type="button"
+															title="" class="btn btn-link btn-primary btn-lg"
+															data-original-title="Edit Task">
 															<i class="fa fa-edit"></i>
 														</a>
-														<button th:data-id="${item.id}" th:data-name="${item.name}"
-																onclick="showConfigModalDialog(this.getAttribute('data-id'), this.getAttribute('data-name'))"
-																type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-															<i class="fa fa-times"></i>
-														</button>
 													</div>
 												</td>
 											</tr>
 										</tbody>
 									</table>
-									
+
 									<script>
-									function showConfigModalDialog(id, name) {
-										$('#name').text(name);
-										$('#yesOption').attr('href', '/deleteSupplier/'+id);
-										$('#configmationId').modal('show');
-									}
+										function showConfigModalDialog(id, name) {
+											$('#name').text(name);
+											$('#yesOption').attr('href', '/deleteSupplier/' + id);
+											$('#configmationId').modal('show');
+										}
 									</script>
-									
+
 									<!-- Modal delete -->
 									<div class="modal" tabindex="-1" role="dialog" id="configmationId">
 										<div class="modal-dialog" role="document">
@@ -258,34 +315,34 @@
 					</div>
 				</div>
 			</div>
-		<footer class="footer">
-			<div class="container-fluid">
-				<nav class="pull-left">
-					<ul class="nav">
-						<li class="nav-item">
-							<a class="nav-link" href="#">
-								Vegana
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">
-								Help
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">
-								Licenses
-							</a>
-						</li>
-					</ul>
-				</nav>
-				<div class="copyright ml-auto">
-					2021, made with <i class="fa fa-heart heart text-danger"></i> by <a href="#">Vegana</a>
-				</div>				
-			</div>
-		</footer>
-	</div>
-		
+			<footer class="footer">
+				<div class="container-fluid">
+					<nav class="pull-left">
+						<ul class="nav">
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									Vegana
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									Help
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									Licenses
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<div class="copyright ml-auto">
+						2021, made with <i class="fa fa-heart heart text-danger"></i> by <a href="#">Vegana</a>
+					</div>
+				</div>
+			</footer>
+		</div>
+
 		<!-- Custom template | don't include it in your project! -->
 		<div class="custom-template">
 			<div class="title">Settings</div>
@@ -302,7 +359,7 @@
 							<button type="button" class="changeLogoHeaderColor" data-color="orange"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="red"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="white"></button>
-							<br/>
+							<br />
 							<button type="button" class="changeLogoHeaderColor" data-color="dark2"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="blue2"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="purple2"></button>
@@ -323,7 +380,7 @@
 							<button type="button" class="changeTopBarColor" data-color="orange"></button>
 							<button type="button" class="changeTopBarColor" data-color="red"></button>
 							<button type="button" class="changeTopBarColor" data-color="white"></button>
-							<br/>
+							<br />
 							<button type="button" class="changeTopBarColor" data-color="dark2"></button>
 							<button type="button" class="selected changeTopBarColor" data-color="blue2"></button>
 							<button type="button" class="changeTopBarColor" data-color="purple2"></button>
@@ -365,7 +422,7 @@
 	<!-- jQuery UI -->
 	<script src="../../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 	<script src="../../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-	
+
 	<!-- jQuery Scrollbar -->
 	<script src="../../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 	<!-- Datatables -->
@@ -374,32 +431,32 @@
 	<script src="../../assets/js/atlantis.min.js"></script>
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="../../assets/js/setting-demo2.js"></script>
-	<script >
-		$(document).ready(function() {
+	<script>
+		$(document).ready(function () {
 			$('#basic-datatables').DataTable({
 			});
 
-			$('#multi-filter-select').DataTable( {
+			$('#multi-filter-select').DataTable({
 				"pageLength": 5,
 				initComplete: function () {
-					this.api().columns().every( function () {
+					this.api().columns().every(function () {
 						var column = this;
 						var select = $('<select class="form-control"><option value=""></option></select>')
-						.appendTo( $(column.footer()).empty() )
-						.on( 'change', function () {
-							var val = $.fn.dataTable.util.escapeRegex(
-								$(this).val()
+							.appendTo($(column.footer()).empty())
+							.on('change', function () {
+								var val = $.fn.dataTable.util.escapeRegex(
+									$(this).val()
 								);
 
-							column
-							.search( val ? '^'+val+'$' : '', true, false )
-							.draw();
-						} );
+								column
+									.search(val ? '^' + val + '$' : '', true, false)
+									.draw();
+							});
 
-						column.data().unique().sort().each( function ( d, j ) {
-							select.append( '<option value="'+d+'">'+d+'</option>' )
-						} );
-					} );
+						column.data().unique().sort().each(function (d, j) {
+							select.append('<option value="' + d + '">' + d + '</option>')
+						});
+					});
 				}
 			});
 
@@ -423,4 +480,5 @@
 		});
 	</script>
 </body>
+
 </html>

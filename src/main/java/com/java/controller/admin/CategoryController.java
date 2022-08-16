@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.java.controller.CommonController;
 import com.java.entity.Category;
@@ -49,12 +50,11 @@ public class CategoryController extends CommonController{
 
 	// add category
 	@PostMapping(value = "/addCategory")
-	public String addCategory(@Validated @ModelAttribute("category") Category category, ModelMap model,
+	public String addCategory(@Validated @ModelAttribute("category") Category category, RedirectAttributes model,
 			BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("error", "failure");
-
 			return "admin/categories";
 		}
 
@@ -67,20 +67,8 @@ public class CategoryController extends CommonController{
 	// get Edit category
 	@GetMapping(value = "/editCategory/{id}")
 	public String editCategory(@PathVariable("id") Integer id, ModelMap model) {
-		Category category = categoryRepository.findById(id).orElse(null);
-		
+		Category category = categoryRepository.findById(id).orElse(null);	
 		model.addAttribute("category", category);
-
 		return "admin/editCategory";
 	}
-
-	// delete category
-	@GetMapping("/delete/{id}")
-	public String delCategory(@PathVariable("id") Integer id, Model model) {
-		categoryRepository.deleteById(id);
-		model.addAttribute("message", "Delete successful!");
-		
-		return "redirect:/admin/categories";
-	}
-
 }
