@@ -88,12 +88,13 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<form class="contact-form" th:action="@{/contact}" method="post" id="contactform">
-						<label class="contact-label"><input type="text" placeholder="Your Name" id="name" name="customerName" />
+						<label class="contact-label"><input type="text" placeholder="Your Name" id="name"
+								name="customerName" />
 							<i class="fas fa-user"></i>
 						</label><label class="contact-label">
-						<input type="text" name="email" placeholder="Your Email" /><i
-								class="fas fa-envelope"></i></label><label class="contact-label"><input name="subject" type="text"
-								placeholder="Your Subject" /><i class="fas fa-bookmark"></i></label><label
+							<input type="text" name="email" placeholder="Your Email" /><i
+								class="fas fa-envelope"></i></label><label class="contact-label"><input name="subject"
+								type="text" placeholder="Your Subject" /><i class="fas fa-bookmark"></i></label><label
 							class="contact-label">
 							<textarea placeholder="Your Message" name="message"></textarea><i
 								class="fas fa-pen-nib"></i></label><button class="btn btn-inline">
@@ -112,54 +113,14 @@
 			</div>
 		</div>
 	</section>
-	<section class="news-part">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-5 col-lg-6">
-					<div class="news-content">
-						<h2>Subscribe for Latest Offers</h2>
-					</div>
-				</div>
-				<div class="col-md-7 col-lg-6">
-					<form class="search-form news-form">
-						<input type="text" placeholder="Enter Email Address" /><button class="btn btn-inline">
-							<i class="fas fa-envelope"></i><span>Subscribe</span>
-						</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</section>
 
 	<!-- Footer -->
-	<footer th:replace="~{/fragments/footer :: footer}"></footer>
+	<footer th:replace="~{/fragments/footer :: body}"></footer>
 
-	<div class="footer-bottom">
-		<div class="container">
-			<p>
-				Copyright &copy; 2020. All rights reserved by -
-				<a target="_blank" href="https://themeforest.net/user/mironcoder">Mironcoder</a>
-			</p>
-			<ul class="pay-card">
-				<li>
-					<a href="#"><img src="images/pay-card/01.jpg" alt="payment-1" /></a>
-				</li>
-				<li>
-					<a href="#"><img src="images/pay-card/02.jpg" alt="payment-2" /></a>
-				</li>
-				<li>
-					<a href="#"><img src="images/pay-card/03.jpg" alt="payment-3" /></a>
-				</li>
-				<li>
-					<a href="#"><img src="images/pay-card/04.jpg" alt="payment-4" /></a>
-				</li>
-			</ul>
-		</div>
-	</div>
 	<script src="js/vendor/jquery-1.12.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
 		integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
-		crossorigin="anonymous" referrerpolicy="no-referrer"></script>	
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="js/vendor/popper.min.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
 	<script src="js/custom/main.js"></script>

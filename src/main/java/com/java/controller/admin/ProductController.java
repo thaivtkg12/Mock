@@ -110,7 +110,7 @@ public class ProductController extends CommonController {
 					model.addAttribute("error", "Add failure");
 				}
 			}else {
-				model.addAttribute("error","Suppler not exist");
+				model.addAttribute("error","Supplier not exist");
 			}
 		} else {
 			model.addAttribute("error", "Category not exist");

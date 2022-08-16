@@ -105,6 +105,15 @@
 											})
 										</script>
 									</th:block>
+									<th:block th:if="${param.message}">
+										<script>
+											Swal.fire({
+												icon: 'success',
+												title: 'Add Sucess',
+												text: '[[${param.message}]]',
+											})
+										</script>
+									</th:block>
 								</div>
 							</div>
 							<div class="card-body">
