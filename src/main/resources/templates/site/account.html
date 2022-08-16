@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="author" content="mironcoder" />
+	<meta name="email" content="mironcoder@gmail.com" />
+	<meta name="profile" content="https://themeforest.net/user/mironcoder" />
+	<meta name="name" content="vegana" />
+	<meta name="title" content="vegana - organic food html template" />
+	<meta name="keywords"
+		content="vegana, organic, food, shop, ecommerce, store, html, agriculture, vegetable, organic food, organic product, organic farm, organic life, organic shop, food store" />
+	<title>Vegana - My Account</title>
+	<link rel="icon" href="images/favicon.png" />
+	<link rel="stylesheet" href="fonts/flaticon/flaticon.css" />
+	<link rel="stylesheet" href="font-awesome/5.14.0/css/all.min.css" />
+	<link rel="stylesheet" href="css/vendor/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/custom/main.css" />
+	<link rel="stylesheet" href="css/custom/account.css" />
+</head>
+
+<body>
+	<!-- Header -->
+	<header th:replace="~{/fragments/header :: header}"></header>
+	<!-- Nav -->
+	<nav th:replace="~{/fragments/nav :: nav}"></nav>
+
+	<section class="single-banner">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="single-content">
+						<h2>My Account</h2>
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+							<li class="breadcrumb-item active" aria-current="page">
+								My Account
+							</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="account-part">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="account-menu">
+						<ul class="nav nav-tabs">
+							<li>
+								<a href="#pro" class="nav-link active" data-toggle="tab">Profile</a>
+							</li>
+							<li>
+								<a href="#editProFile" class="nav-link" data-toggle="tab">Edit Profile</a>
+							</li>
+							<li>
+								<a href="#order" class="nav-link" data-toggle="tab">Orders</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane active" id="pro">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-heading">
+							<h2>Your Timeline</h2>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="account-card">
+							<div class="account-title">
+								<h3>Introduction</h3>
+								<a href="#">Edit</a>
+							</div>
+							<div class="profile-intro" style="padding-left: 35%">
+								<div class="profile-author">
+									<a href="#"><img src="images/avatar/05.png" alt="01" /></a>
+									<h4>[[${customer.fullname}]]</h4>
+									<p><span>Role:</span>[[${customer.roleId}]]</p>
+									<p><span>(0: User / 1: Admin)</span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="account-card">
+							<div class="account-title">
+								<h3>Contact Information</h3>
+								<a href="#">Edit</a>
+							</div>
+							<ul class="account-list">
+								<li>
+									<h6>Full Name:</h6>
+									<p>[[${customer.fullname}]]</p>
+								</li>
+								<li>
+									<h6>Email:</h6>
+									<p>[[${customer.email}]]</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane" id="editProFile">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-heading">
+							<h2>Your Profile</h2>
+						</div>
+					</div>
+					<div class="col-lg-3">
+					</div>
+					<div class="col-lg-6">
+						<form action="/account" method="post" enctype="multipart/form-data">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="form-group form-group-default">
+										<label>Full name</label>
+										<input id="name" name="fullName" th:value="${customer.fullname}" type="text"
+											class="form-control" placeholder="Full name">
+									</div>
+								</div>
+								<div class="col-sm-12">
+									<div class="form-group form-group-default">
+										<label>Email</label>
+										<input id="email" name="email" th:value="${customer.email}" type="text"
+											class="form-control" placeholder="@gmail.com">
+									</div>
+								</div>
+								<div class="col-sm-12">
+									<div class="form-group form-group-default">
+										<label>Old-Password</label>
+										<input id="old-password" name="oldPassword" type="password" class="form-control"
+											placeholder="Old-password">
+									</div>
+								</div>
+								<div class="col-sm-12">
+									<div class="form-group form-group-default">
+										<label>New-Password</label>
+										<input id="new-password" name="newPassword" type="password" class="form-control"
+											placeholder="New password">
+									</div>
+								</div>
+								<div class="col-sm-12">
+									<div class="form-group form-group-default">
+										<label>Re-Password</label>
+										<input id="re-password" type="password" class="form-control"
+											placeholder="Re-password">
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer no-bd">
+								<button type="submit" class="btn btn-primary">Update</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane" id="order">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-heading">
+							<h2>Order History</h2>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="order-content">
+							<table class="table-list">
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">OrderID</th>
+										<th scope="col">Date</th>
+										<th scope="col">Total</th>
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="item, iState : ${orders2}">
+										<td class="table-order">
+											<p>[[${iState.index + 1}]]</p>
+										</td>
+										<td class="table-order">
+											<p>[[${item.orderId}]]</p>
+										</td>
+										<td class="table-date">
+											<p>[[${item.orderDate}]]</p>
+										</td>
+										<td class="table-total">
+											<p>[['$'+${#numbers.formatDecimal(item.totalPrice, 1, 'DEFAULT', 0,
+												'DEFAULT')}]]</p>
+										</td>
+										<td class="table-action">
+											<button type="button" class="btn btn-primary" data-toggle="modal"
+												th:attr="data-target=@{|${'#x'+iState.index}|}"
+											>
+												Detail
+											</button>
+										</td>
+										<!--=============-->
+
+										<!-- Modal -->
+										<div class="modal fade" th:attr="id=@{|${'x'+iState.index}|}" tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog"  role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<div class="d-flex align-items-center">
+															<h4 class="card-title">Order Detail
+															</h4>
+														</div>
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<div class="modal-body">
+														<div>
+															<section class="modal-dialog detail ">
+																<div class="modal-content" >
+																	<div class="row">
+																		<div class="">
+																			<div class="card card-stepper" >
+																				<div class="card-header p-4">
+																					<div
+																						class="d-flex justify-content-between align-items-center">
+																						<div>
+																							<p class="text-muted mb-2">
+																								Order ID: <span
+																									class="fw-bold text-body"># [[${item.orderId}]]</span>
+																							</p>
+																							<p class="text-muted mb-0">
+																								Customer:
+																								<span
+																									class="fw-bold text-body">
+																									[[${item.customer.fullname}]]
+																								</span>
+																							</p>
+																							<p class="text-muted mb-0">
+																								Phone number:
+																								<span
+																									class="fw-bold text-body">
+																									[[${item.phone}]]
+																								</span>
+																							</p>
+																						</div>
+																					</div>
+																				</div>
+																				<div class="card-body p-4">
+																					<div class="d-flex flex-row mb-4 pb-2"
+																						th:each="orderdetail:${item.orderDetails}">
+																						<div class="flex-fill">
+																							<h6 class="bold">
+																								[[${orderdetail.product.name}]]</h6>
+																							<p class="text-muted"> Qt:
+																								[[${orderdetail.quantity}]] item &emsp;|&emsp;
+																								<span>Price: $
+																									[[${orderdetail.price}]]
+																								</span>
+																								&emsp;|&emsp;
+																								<span>Discount:
+																									[[${orderdetail.discount}]]%</span>
+																								&emsp;|&emsp;
+																								<span>Total:
+																									[[${orderdetail.totalPrice}]] $</span>
+																							</p>
+
+																						</div>
+																						<div>
+																							<img class="align-self-center img-fluid"
+																								th:src="@{'/loadImage?imageName='+${orderdetail.product.image}}"
+																								width="100">
+																						</div>
+																					</div>
+																					<div class="mb-4 pb-2">
+																						<div class="flex-fill">
+																							<h6
+																								class="bold text-danger">
+																								Total: $
+																								4000</h6>
+																						</div>
+																					</div>
+																					<ul id="progressbar-1"
+																						class="mx-0 mt-0 mb-5 px-0 pt-0 pb-4"
+																						th:if="${item.status} == 0">
+																						<li class="step0 active"
+																							id="step1"><span
+																								style="margin-left: 22px; margin-top: 12px;">PROCESSING</span>
+																						</li>
+																						<li class="step0 text-center"
+																							id="step2">
+																							<span>SHIPPING</span>
+																						</li>
+																						<li class="step0 text-muted text-end"
+																							id="step3"><span
+																								style="margin-right: 22px;">DELIVERED</span>
+																						</li>
+																					</ul>
+																					<ul id="progressbar-1"
+																						class="mx-0 mt-0 mb-5 px-0 pt-0 pb-4"
+																						th:if="${item.status} == 1">
+																						<li class="step0 active"
+																							id="step1">
+																							<span
+																								style="margin-left: 22px; margin-top: 12px;">PROCESSING</span>
+																						</li>
+																						<li class="step0 active text-center"
+																							id="step2">
+																							<span>SHIPPED</span>
+																						</li>
+																						<li class="step0 text-muted text-end"
+																							id="step3">
+																							<span
+																								style="margin-right: 22px;">DELIVERED</span>
+																						</li>
+																					</ul>
+																				</div>
+																				<div class="p-4 position-relative"
+																					th:if="${item.status} == 1">
+																					<div
+																						class="d-flex justify-content-end">
+																						<h6><em>Shipping</em></h6>
+																					</div>
+																				</div>
+																				<div class="card-footer p-4"
+																					th:if="${item.status} < 2">
+																					<div
+																						class="d-flex justify-content-end">
+																						<a
+																							th:href="@{|/account/cancel-order/${item.orderId}|}">
+																							<button type="button"
+																								class="btn-edit btn-danger">Cancel
+																								order</button>
+																						</a>
+																						<p th:if="${item.status} == 0">
+																							&emsp;</p>
+																						
+																						<p th:if="${item.status} == 1">
+																							&emsp;</p>
+																					</div>
+																				</div>
+																				<div class="card-footer p-4 position-relative"
+																					th:if="${item.status} == 2">
+																					<div
+																						class="d-flex justify-content-end">
+																						<h6><em>Cancelled</em></h6>
+																					</div>
+																				</div>
+																				<div class="card-footer p-4 position-relative"
+																					th:if="${item.status} == 3">
+																					<div
+																						class="d-flex justify-content-end">
+																						<h6><em>Delivered</em></h6>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</section>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!--======-->
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="order-btn">
+							<a href="#" class="btn btn-inline"><i class="fas fa-eye"></i>show more</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--======-->
+
+		<section class="news-part">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5 col-lg-6">
+						<div class="news-content">
+							<h2>Subscribe for Latest Offers</h2>
+						</div>
+					</div>
+					<div class="col-md-7 col-lg-6">
+						<form class="search-form news-form">
+							<input type="text" placeholder="Enter Email Address" /><button class="btn btn-inline">
+								<i class="fas fa-envelope"></i><span>Subscribe</span>
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer th:replace="~{/fragments/footer :: footer}"></footer>
+
+		<div class="footer-bottom">
+			<div class="container">
+				<p>
+					Copyright &copy; 2020. All rights reserved by -
+					<a target="_blank" href="https://themeforest.net/user/mironcoder">Mironcoder</a>
+				</p>
+				<ul class="pay-card">
+					<li>
+						<a href="#"><img src="images/pay-card/01.jpg" alt="payment-1" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/pay-card/02.jpg" alt="payment-2" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/pay-card/03.jpg" alt="payment-3" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/pay-card/04.jpg" alt="payment-4" /></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script src="js/vendor/jquery-1.12.4.min.js"></script>
+		<script src="js/vendor/popper.min.js"></script>
+		<script src="js/vendor/bootstrap.min.js"></script>
+		<script src="js/vendor/jquery-ui.js"></script>
+		<script src="js/custom/price-range.js"></script>
+		<script src="js/custom/main.js"></script>
+</body>
+<!-- Mirrored from mironmahmud.com/vegana/assets/ltr-version/account.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Jun 2021 04:33:12 GMT -->
+
+</html>

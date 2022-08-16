@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <meta
+    http-equiv="content-type"
+    content="text/html;charset=utf-8"
+  />
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    
+    <meta name="author" content="mironcoder" />
+    <meta name="email" content="mironcoder@gmail.com" />
+    <meta name="profile" content="https://themeforest.net/user/mironcoder" />
+    <meta name="name" content="vegana" />
+    <meta name="title" content="vegana - organic food html template" />
+    <meta
+      name="keywords"
+      content="vegana, organic, food, shop, ecommerce, store, html, agriculture, vegetable, organic food, organic product, organic farm, organic life, organic shop, food store"
+    />
+    <title>Vegana - Checkout</title>
+    <link rel="icon" href="images/favicon.png" />
+    <link rel="stylesheet" href="fonts/flaticon/flaticon.css" />
+   	<link rel="stylesheet" href="font-awesome/5.14.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/custom/main.css" />
+    <link rel="stylesheet" href="css/custom/checkout.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header th:replace="~{/fragments/header :: header}"></header>
+    <!-- Nav -->
+    <nav th:replace="~{/fragments/nav :: nav}"></nav>
+    
+    <section class="single-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="single-content">
+              <h2>Checkout</h2>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+                <li class="breadcrumb-item">
+                  <a th:href="@{/products}">Product list</a>
+                </li>
+                <li class="breadcrumb-item">
+                  <a href="#">Product details</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Checkout
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="checkout-part">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="checkout-action">
+              <i class="fas fa-external-link-alt"></i
+              ><span
+                >Returning customer? <a href="#">Click here to login</a></span
+              >
+            </div>
+          </div>
+        </div>
+        <form th:action="@{/checkout}" th:object="${order}" method="post">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="row checkout-form">
+                <div class="col-lg-12">
+                  <div class="check-form-title"><h3>Shipping Address</h3></div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Full name"
+                      th:field="*{receiver}"
+                      required="required"
+                    />
+                  </div>
+                </div>
+                
+                 <div class="col-lg-12">
+                  <div class="form-group">
+                   
+<select name=slist  class="form-control"
+                      placeholder="Address"
+                      th:field="*{address}"
+                      required="required">
+<option value="An Giang">An Giang</option>
+<option value="Bac Giang">Bac Giang</option>
+<option value="Bac Kan">Bac Kan</option>
+<option value="Bac Lieu">Bac Lieu</option>
+<option value="Bac Ninh">Bac Ninh</option>
+<option value="Ba Ria-Vung Tau">Ba Ria-Vung Tau</option>
+<option value="Ben Tre">Ben Tre</option>
+<option value="Binh Dinh">Binh Dinh</option>
+<option value="Binh Duong">Binh Duong</option>
+<option value="Binh Phuoc">Binh Phuoc</option>
+<option value="Binh Thuan">Binh Thuan</option>
+<option value="Ca Mau">Ca Mau</option>
+<option value="Cao Bang">Cao Bang</option>
+<option value="Dac Lak">Dac Lak</option>
+<option value="Dac Nong">Dac Nong</option>
+<option value="Dien Bien">Dien Bien</option>
+<option value="Dong Nai">Dong Nai</option>
+<option value="Dong Thap">Dong Thap</option>
+<option value="Gia Lai">Gia Lai</option>
+<option value="Ha Giang">Ha Giang</option>
+<option value="Hai Duong">Hai Duong</option>
+<option value="Ha Nam">Ha Nam</option>
+<option value="Ha Tay">Ha Tay</option>
+<option value="Ha Tinh">Ha Tinh</option>
+<option value="Hau Giang">Hau Giang</option>
+<option value="Hoa Binh">Hoa Binh</option>
+<option value="Hung Yen">Hung Yen</option>
+<option value="Khanh Hoa">Khanh Hoa</option>
+<option value="Kien Giang">Kien Giang</option>
+<option value="Kon Tum">Kon Tum</option>
+<option value="Lai Chau">Lai Chau</option>
+<option value="Lam Dong">Lam Dong</option>
+<option value="Lang Son">Lang Son</option>
+<option value="Lao Cai">Lao Cai</option>
+<option value="Long An">Long An</option>
+<option value="Nam Dinh">Nam Dinh</option>
+<option value="Nghe An">Nghe An</option>
+<option value="Ninh Binh">Ninh Binh</option>
+<option value="Ninh Thuan">Ninh Thuan</option>
+<option value="Phu Tho">Phu Tho</option>
+<option value="Phu Yen">Phu Yen</option>
+<option value="Quang Binh">Quang Binh</option>
+<option value="Quang Nam">Quang Nam</option>
+<option value="Quang Ngai">Quang Ngai</option>
+<option value="Quang Ninh">Quang Ninh</option>
+<option value="Quang Tri">Quang Tri</option>
+<option value="Soc Trang">Soc Trang</option>
+<option value="Son La">Son La</option>
+<option value="Tay Ninh">Tay Ninh</option>
+<option value="Thai Binh">Thai Binh</option>
+<option value="Thai Nguyen">Thai Nguyen</option>
+<option value="Thanh Hoa">Thanh Hoa</option>
+<option value="Thua Thien-Hue">Thua Thien-Hue</option>
+<option value="Tien Giang">Tien Giang</option>
+<option value="Tra Vinh">Tra Vinh</option>
+<option value="Tuyen Quang">Tuyen Quang</option>
+<option value="Vinh Long">Vinh Long</option>
+<option value="Vinh Phuc">Vinh Phuc</option>
+<option value="Yen Bai">Yen Bai</option>
+<option value="Can Tho">Can Tho</option>
+<option value="Da Nang">Da Nang</option>
+<option value="Hai Phong">Hai Phong</option>
+<option value="Hanoi">Hanoi</option>
+<option value="Ho Chi Minh">Ho Chi Minh</option>
+
+</select>
+<!-- Script by hscripts.com -->
+                  </div>
+                
+                
+                
+                
+            
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Phone Number"
+                      th:field="*{phone}"
+                      required="required"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Description"
+                      th:field="*{description}"
+                      required="required"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row checkout-table">
+            <div class="col-lg-12">
+              <div class="check-form-title"><h3>Confirm Order</h3></div>
+              <div class="table-scroll">
+                <table class="table-list">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Product</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">Total</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="item, iState : ${cartItems}">
+                      <td class="table-number"><h5>[[${iState.index + 1}]]</h5></td>
+                      <td class="table-product">
+                        <img th:src="@{'/loadImage?imageName='+${item.product.image}}" alt="product" />
+                      </td>
+                      <td class="table-name"><h5>[[${item.product.name}]]</h5></td>
+                      <td class="table-price"><h5>[['$'+ ${#numbers.formatDecimal(item.product.price - (item.product.price * item.product.discount/100), 0, 'POINT', 0, 'POINT')}]]</h5></td>
+                       <td class="table-quantity" style="color: black; font-weight: bold;">
+                    	[[${item.quantity}]]
+                    </td>
+                      <td class="table-total"><h5>[['$'+${#numbers.formatDecimal((item.product.price - (item.product.price * item.product.discount/100)) * item.quantity, 1, 'DEFAULT', 0, 'DEFAULT')}]]</h5></td>
+                      <td class="table-action">
+                      <a th:href="@{/productDetail(productId=${item.product.productId})}"><i class="fas fa-eye"></i></a>
+                      
+                      <a href="#" th:data-id="${item.product.productId}" th:data-name="${item.product.name}"
+							onclick="showConfigModalDialog(this.getAttribute('data-id'), this.getAttribute('data-name'))">
+							<i class="fas fa-trash-alt"></i>
+						</a>
+                    </td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+                <script>
+				function showConfigModalDialog(id, name) {
+					$('#name').text(name);
+					$('#yesOption').attr('href', '/remove/'+id);
+					$('#configmationId').modal('show');
+				}
+				</script>
+				
+				<!-- Modal -->
+				<div class="modal" tabindex="-1" role="dialog" id="configmationId">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Confirm</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p>Do you want to remove this product from your shopping cart?</p>
+							</div>
+							<div class="modal-footer">
+								<a id="yesOption" type="button" class="btn btn-success">Yes</a>
+								<button type="button" class="btn btn-danger"
+									data-dismiss="modal">No</button>
+							</div>
+						</div>
+					</div>
+				</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="checkout-charge">
+                <ul>
+                <li><span>Shipping Charge</span><span>$0</span></li>
+                <li><span>Total</span><span>[['$'+${#numbers.formatDecimal(totalPrice, 1, 'DEFAULT', 0, 'DEFAULT')}]]</span></li>
+              </ul>
+              </div>
+              <div class="check-order-btn">
+                <button  class="btn btn-inline" type="submit">
+                  <i class="fas fa-paper-plane"></i>
+                  <span>Place order</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section class="news-part">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 col-lg-6">
+            <div class="news-content"><h2>Subscribe for Latest Offers</h2></div>
+          </div>
+          <div class="col-md-7 col-lg-6">
+            <form class="search-form news-form">
+              <input type="text" placeholder="Enter Email Address" /><button
+                class="btn btn-inline"
+              >
+                <i class="fas fa-envelope"></i><span>Subscribe</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer th:replace="~{/fragments/footer :: footer}"></footer>
+    
+    <div class="footer-bottom">
+      <div class="container">
+        <p>
+          Copyright &copy; 2020. All rights reserved by -
+          <a target="_blank" href="https://themeforest.net/user/mironcoder"
+            >Mironcoder</a
+          >
+        </p>
+        <ul class="pay-card">
+          <li>
+            <a href="#"><img src="images/pay-card/01.jpg" alt="payment-1" /></a>
+          </li>
+          <li>
+            <a href="#"><img src="images/pay-card/02.jpg" alt="payment-2" /></a>
+          </li>
+          <li>
+            <a href="#"><img src="images/pay-card/03.jpg" alt="payment-3" /></a>
+          </li>
+          <li>
+            <a href="#"><img src="images/pay-card/04.jpg" alt="payment-4" /></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Script by hscripts.com -->
+<select name=slist>
+<script language="javascript">
+var states = new Array("An Giang", "Bac Giang", "Bac Kan", "Bac Lieu", "Bac Ninh", "Ba Ria-Vung Tau", "Ben Tre", "Binh Dinh", "Binh Duong", "Binh Phuoc", "Binh Thuan", "Ca Mau", "Cao Bang", "Dac Lak", "Dac Nong", "Dien Bien", "Dong Nai", "Dong Thap", "Gia Lai", "Ha Giang", "Hai Duong", "Ha Nam", "Ha Tay", "Ha Tinh", "Hau Giang", "Hoa Binh", "Hung Yen", "Khanh Hoa", "Kien Giang", "Kon Tum", "Lai Chau", "Lam Dong", "Lang Son", "Lao Cai", "Long An", "Nam Dinh", "Nghe An", "Ninh Binh", "Ninh Thuan", "Phu Tho", "Phu Yen", "Quang Binh", "Quang Nam", "Quang Ngai", "Quang Ninh", "Quang Tri", "Soc Trang", "Son La", "Tay Ninh", "Thai Binh", "Thai Nguyen", "Thanh Hoa", "Thua Thien-Hue", "Tien Giang", "Tra Vinh", "Tuyen Quang", "Vinh Long", "Vinh Phuc", "Yen Bai", "Can Tho", "Da Nang", "Hai Phong", "Hanoi", "Ho Chi Minh");
+
+for(var hi=0; hi<states.length; hi++) 
+document.write("<option value=\""+states[hi]+"\">"+states[hi]+"</option>");
+</script>
+</select>
+<!-- Script by hscripts.com -->
+
+<!-- Script by hscripts.com -->
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/vendor/popper.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/custom/main.js"></script>
+  </body>
+</html>
